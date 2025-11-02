@@ -1,0 +1,7 @@
+name=Worm
+author=Willems Davy aka Joyrider3774
+description=A Worm / Copter game remake
+bundleID=com.joyrider3774.worm
+version=1.0
+imagePath=metadata
+buildNumber=1
