@@ -620,7 +620,7 @@ int mainLoop(void* ud)
                 Text2[13] = 'A' + gameMode;
                 int fw = pd->graphics->getTextWidth(MonoFont, Text2, strlen(Text2), kASCIIEncoding, 0);
                 drawTextColor(MonoFont,Text2, strlen(Text2), kASCIIEncoding, (ScreenWidth - fw) >> 1, (ScreenHeight >> 1) - fh, kColorWhite, false);
-                pd->system->realloc(&Text2, 0);
+                pd->system->realloc(Text2, 0);
 
                 pd->system->formatString(&Text2, "READY");
                 fw = pd->graphics->getTextWidth(MonoFont, Text2, strlen(Text2), kASCIIEncoding, 0);
