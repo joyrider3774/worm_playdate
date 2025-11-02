@@ -8,7 +8,7 @@ jobs:
     strategy:
       matrix:
         include:
-          - { pdx: Worm.pdx, env: playdate }
+          - { pdx: Worm_DEVICE.pdx, env: playdate }
           
     runs-on: ubuntu-latest       
     steps:
