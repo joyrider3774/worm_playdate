@@ -92,5 +92,5 @@ jobs:
       - name: Store build
         uses: actions/upload-artifact@v4
         with:
-          name: Rubido ${{ matrix.env }}
+          name: Worm ${{ matrix.env }}
           path: Source/
