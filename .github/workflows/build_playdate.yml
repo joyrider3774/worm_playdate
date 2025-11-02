@@ -8,7 +8,7 @@ jobs:
     strategy:
       matrix:
         include:
-          - { pdx: Worm_DEVICE.pdx, env: playdate }
+          - { artiface_name: Worm, pdx: Worm_DEVICE.pdx, output-pdx: Worm.pdx env: playdate }
           
     runs-on: ubuntu-latest       
     steps:
@@ -53,11 +53,11 @@ jobs:
       - name: Prepare Artifact directory
         run: |
           mkdir output
-          mv ${{matrix.pdx}} output/
+          mv ${{matrix.pdx}} output/${{matrix.output-pdx}}
       
       - name: Store build
         uses: actions/upload-artifact@v4
         with:
-          name: Rubido ${{matrix.env}}
+          name: ${{matrix.artiface_name}} ${{matrix.env}}
           path: output
 
