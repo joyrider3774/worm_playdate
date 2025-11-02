@@ -52,7 +52,7 @@ jobs:
       - name: Build Game
         shell: msys2 {0}
         run: |
-          make WINDOWSCALE=2 NOX11=1
+          make WINDOWSCALE=2 LDUSEX11=0
 
       - name: Copy dll libraries
         shell: msys2 {0}
