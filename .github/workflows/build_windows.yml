@@ -7,7 +7,7 @@ jobs:
   build:
     strategy:
       matrix:
-        include:mingw-w64-i686-SDL_image
+        include:
           - { sys: mingw64, env: x86_64 }
          # - { sys: mingw32, env: i686 }
     runs-on: windows-latest    
