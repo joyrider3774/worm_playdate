@@ -1,5 +1,6 @@
 #include <string.h>
 #include <pd_api.h>
+#include <stdbool.h>
 #include "Worm.h"
 #include "SaveData.h"
 
