@@ -7,9 +7,9 @@ jobs:
   build:
     strategy:
       matrix:
-        include:
+        include:mingw-w64-i686-SDL_image
           - { sys: mingw64, env: x86_64 }
-          - { sys: mingw32, env: i686 }
+         # - { sys: mingw32, env: i686 }
     runs-on: windows-latest    
     steps:
       - name: Checkout Playdate SDL2 Api Sources
