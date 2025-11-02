@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <string.h>
 #include <pd_api.h>
 #include <stdbool.h>
@@ -585,8 +584,8 @@ int mainLoop(void* ud)
     prevButtons = currButtons;
     pd->system->getButtonState(&currButtons, NULL, NULL);
 
-    char Text[250];
-    char Text2[100];
+    char* Text;
+    char* Text2;
     drawBackGround();
     drawTunnel();
     if((gameMode == 0) || (gameMode == 2))
@@ -617,15 +616,16 @@ int mainLoop(void* ud)
             startDelay--;
             if(startDelay > (20/FPSScaleFactor))
             {
-                strcpy(Text2, "Playing GAME A");
+                pd->system->formatString(&Text2, "Playing GAME A");
                 Text2[13] = 'A' + gameMode;
                 int fw = pd->graphics->getTextWidth(MonoFont, Text2, strlen(Text2), kASCIIEncoding, 0);
-                
                 drawTextColor(MonoFont,Text2, strlen(Text2), kASCIIEncoding, (ScreenWidth - fw) >> 1, (ScreenHeight >> 1) - fh, kColorWhite, false);
-                
-                strcpy(Text2, "READY");
+                pd->system->realloc(&Text2, 0);
+
+                pd->system->formatString(&Text2, "READY");
                 fw = pd->graphics->getTextWidth(MonoFont, Text2, strlen(Text2), kASCIIEncoding, 0);
                 drawTextColor(MonoFont, Text2, strlen(Text2), kASCIIEncoding, (ScreenWidth - fw) >> 1, (ScreenHeight >> 1), kColorWhite, false);
+                pd->system->realloc(Text2, 0);
                 
             }
             else
@@ -641,28 +641,34 @@ int mainLoop(void* ud)
     }
     else
     {
-        strcpy(Text, "WORM");
+        char* Text;        
+        pd->system->formatString(&Text, "WORM");
         int fw = pd->graphics->getTextWidth(MonoFont, Text, strlen(Text), kASCIIEncoding, 0);
         int fh = pd->graphics->getFontHeight(MonoFont);
         drawTextColor(MonoFont, Text, strlen(Text), kASCIIEncoding, (ScreenWidth - fw) >> 1, ScreenBorderWidth, kColorWhite, false);
-
-        strcpy(Text, "Press A or B To Play GAME A");
+        pd->system->realloc(Text, 0);
+        
+        pd->system->formatString(&Text, "Press A or B To Play GAME A");
         Text[26] = 'A' + gameMode;
         fw = pd->graphics->getTextWidth(MonoFont, Text, strlen(Text), kASCIIEncoding, 0);
         drawTextColor(MonoFont, Text, strlen(Text), kASCIIEncoding, (ScreenWidth - fw) >> 1, ScreenBorderWidth + 1 * fh + 10, kColorWhite, false);
+        pd->system->realloc(Text, 0);
         
-        strcpy(Text, "Press Direction To Change Mode");
+        pd->system->formatString(&Text, "Press Direction To Change Mode");
         fw = pd->graphics->getTextWidth(MonoFont, Text, strlen(Text), kASCIIEncoding, 0);
         drawTextColor(MonoFont, Text, strlen(Text), kASCIIEncoding, (ScreenWidth - fw) >> 1, ScreenBorderWidth + 2 * fh + 10, kColorWhite, false);
-        
-        strcpy(Text, "Pressing A or B Repeadetly");
+        pd->system->realloc(Text, 0);
+
+        pd->system->formatString(&Text, "Pressing A or B Repeadetly");
         fw = pd->graphics->getTextWidth(MonoFont, Text, strlen(Text), kASCIIEncoding, 0);
         drawTextColor(MonoFont, Text, strlen(Text), kASCIIEncoding, (ScreenWidth - fw) >> 1, ScreenBorderWidth + 3 * fh + 20, kColorWhite, false);
+        pd->system->realloc(Text, 0);
 
-        strcpy(Text, "will keep the worm alive");
+        pd->system->formatString(&Text, "will keep the worm alive");
         fw = pd->graphics->getTextWidth(MonoFont, Text, strlen(Text), kASCIIEncoding, 0);
         drawTextColor(MonoFont, Text, strlen(Text), kASCIIEncoding, (ScreenWidth - fw) >> 1, ScreenBorderWidth + 4 * fh + 20, kColorWhite, false);
-        
+        pd->system->realloc(Text, 0);
+
         if((!(prevButtons & kButtonA) && (currButtons & kButtonA)) ||
             (!(prevButtons & kButtonB) && (currButtons & kButtonB)))
         {
@@ -699,31 +705,33 @@ int mainLoop(void* ud)
         }
     }
 	if (selSeed == 0)
-		sprintf(Text, "LVL:%d Rnd1", seed-1);
+        pd->system->formatString(&Text, "LVL:%d Rnd1", seed-1);
     else
     {
         if (selSeed == 1)
-           sprintf(Text, "LVL:%d Rnd2", seed-1);
+            pd->system->formatString(&Text, "LVL:%d Rnd2", seed-1);
         else
-			sprintf(Text, "LVL:%d", selSeed-1);
+            pd->system->formatString(&Text, "LVL:%d", selSeed-1);
     }
 
     int w, h;
     h = pd->graphics->getFontHeight(MonoFont);
     w = pd->graphics->getTextWidth(MonoFont, Text, strlen(Text), kASCIIEncoding, 0);    
     drawTextColor(MonoFont,Text, strlen(Text), kASCIIEncoding, ScreenBorderWidth + 1, ScreenHeight - h, kColorWhite, false);
+    pd->system->realloc(Text, 0);
 
     if (selSeed <= 1)
     {
         if (seed >= maxSeed)
-            sprintf(Text, "S:%d h:%d", score, save.highScores[gameMode * maxSeed]);
+            pd->system->formatString(&Text, "S:%d h:%d", score, save.highScores[gameMode * maxSeed]);
         else
-            sprintf(Text, "S:%d h:%d", score, save.highScores[gameMode * maxSeed + seed]);
+            pd->system->formatString(&Text, "S:%d h:%d", score, save.highScores[gameMode * maxSeed + seed]);
     }
     else if (selSeed > 1)
-        sprintf(Text, "S:%d h:%d", score, save.highScores[gameMode * maxSeed + selSeed]);
+        pd->system->formatString(&Text, "S:%d h:%d", score, save.highScores[gameMode * maxSeed + selSeed]);
 
     w = pd->graphics->getTextWidth(MonoFont, Text, strlen(Text), kASCIIEncoding, 0);
     drawTextColor(MonoFont,Text, strlen(Text), kASCIIEncoding, ScreenWidth - 2 - ScreenBorderWidth - w, ScreenHeight - h, kColorWhite, false);
+    pd->system->realloc(Text, 0);
     return result;
 }
