@@ -6,13 +6,24 @@
 This is my worm game for Playdate, initially written for the vircon32 fantasy console, then ported SDL3 and now to Playdate.
 It is a remake of the classic copter / worm game with multiple gameplay modes
 
-## Controls
+## Controls Playdate / XBox Controller
 
-| Key         | Action                                        |
+| Button      | Action                                        |
 |-------------|-----------------------------------------------|
 | A or B      | Start GAME, Repeadetly tap to move Worm       |
 | LEFT/RIGHT  | Select Game Mode on Titlescreen               |
 | UP/DOWN     | Select Level on Titlescreen                   |
+
+## Controls Keyboard
+
+| Key         | Action                                        |
+|-------------|-----------------------------------------------|
+| SPACE       | Start GAME, Repeadetly tap to move Worm       |
+| LEFT/RIGHT  | Select Game Mode on Titlescreen               |
+| UP/DOWN     | Select Level on Titlescreen                   |
+| F           | Switch Fullscreen / Windowed                  |
+| F3          | Reset Game                                    |
+| F4          | Quit Game                                     |
 
 ## Aim of the game
 Repeadetly Press / hold A button to move the worm around, dont hit obstacles and walls, try to gain highest score.
