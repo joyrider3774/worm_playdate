@@ -388,7 +388,6 @@ void moveTunnel()
         //if tunnel section is offscreen on the left
         if (tunnelParts[j*2].x + tunnelSectionWidth <= 0)
         {
-            int diff = tunnelParts[j * 2].x;
             //erase that section from the arrray by moving all other section down in the array
             for (int i = 0; i <= ceil(ScreenWidth / tunnelSectionWidth)+ offScreenTunnelSections;i++)
             {
@@ -698,57 +697,31 @@ int mainLoop(void* ud)
                 selSeed = 0;
         }
     }
-    char nr[100];
-    strcpy(Text, "LVL:");
-    if (selSeed == 0)
-    {
-        itoa(seed - 1, nr, 10);
-        strcat(Text, nr);
-        strcat(Text, " Rnd1");
-        
-    }
+	if (selSeed == 0)
+		sprintf(Text, "LVL:%d Rnd1", seed-1);
     else
     {
         if (selSeed == 1)
-        {
-            itoa(seed - 1, nr, 10);
-            strcat(Text, nr);
-            strcat(Text, " Rnd2");
-        }
+           sprintf(Text, "LVL:%d Rnd2", seed-1);
         else
-        {
-            itoa(selSeed-1, nr, 10);
-            strcat(Text, nr);
-        }
+			sprintf(Text, "LVL:%d", selSeed-1);
     }
-
-    /*strcat(Text, " ");
-    itoa(tunnelSpeed, nr, 10);
-    strcat(Text, nr);
-    strcat(Text, "/");
-    itoa(tunnelSectionWidth,nr,10 );
-    strcat(Text, nr);*/
-
 
     int w, h;
     h = pd->graphics->getFontHeight(MonoFont);
     w = pd->graphics->getTextWidth(MonoFont, Text, strlen(Text), kASCIIEncoding, 0);    
     drawTextColor(MonoFont,Text, strlen(Text), kASCIIEncoding, ScreenBorderWidth + 1, ScreenHeight - h, kColorWhite, false);
-    strcpy(Text, "S:");
-    itoa(score, nr, 10);
-    strcat(Text, nr);
-    strcat(Text, " H:");
+
     if (selSeed <= 1)
     {
         if (seed >= maxSeed)
-            itoa(save.highScores[gameMode * maxSeed], nr, 10);
+            sprintf(Text, "S:%d h:%d", score, save.highScores[gameMode * maxSeed]);
         else
-            itoa(save.highScores[gameMode * maxSeed + seed], nr, 10);
+            sprintf(Text, "S:%d h:%d", score, save.highScores[gameMode * maxSeed + seed]);
     }
     else if (selSeed > 1)
-        itoa(save.highScores[gameMode * maxSeed + selSeed], nr, 10);
+        sprintf(Text, "S:%d h:%d", score, save.highScores[gameMode * maxSeed + selSeed]);
 
-    strcat(Text, nr);
     w = pd->graphics->getTextWidth(MonoFont, Text, strlen(Text), kASCIIEncoding, 0);
     drawTextColor(MonoFont,Text, strlen(Text), kASCIIEncoding, ScreenWidth - 2 - ScreenBorderWidth - w, ScreenHeight - h, kColorWhite, false);
     return result;
