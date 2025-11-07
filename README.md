@@ -18,7 +18,7 @@ It is a remake of the classic copter / worm game with multiple gameplay modes
 
 | Key         | Action                                        |
 |-------------|-----------------------------------------------|
-| SPACE       | Start GAME, Repeadetly tap to move Worm       |
+| SPACE, A, B | Start GAME, Repeadetly tap to move Worm       |
 | LEFT/RIGHT  | Select Game Mode on Titlescreen               |
 | UP/DOWN     | Select Level on Titlescreen                   |
 | F           | Switch Fullscreen / Windowed                  |
@@ -72,3 +72,13 @@ The game was made possible after watching this youtube movie: [https://www.youtu
 
 ## License
 * License of my part of game's code is MIT
+
+## History
+
+### V1.1
+- Better Collision detection, it now also checks for intersections on the rectangles instead of only fully inside in for example, walls, collectibles or obstacles
+- Faster Collision detection for tunnel walls by only checking the tunnel sections near the player instead of all of them
+- Fix a few tunnelSection potentially not being intialized although it posed no problem during gameplay in the previous version
+- Faster Worm drawing, by not redrawing every worm intersection at 1 pixel manually but just setting the line width (does drawing of an intersection in one go)
+- More Variables / constants in the code instead of relying on hardcoded numerical values
+

@@ -10,17 +10,18 @@
 
 #define ObstacleWidth (int)(16 / ScaleFactor)
 #define ObstacleHeight (int)(35 / ScaleFactor)
-#define obstacleSpaceFromTunnel (int)(10 / ScaleFactor)
+#define ObstacleSpaceFromTunnel (int)(10 / ScaleFactor)
 
+#define PlayerWidthHeight 5
 #define CollectibleWidth (int)(20 / ScaleFactor)
 #define CollectibleHeight (int)(20 / ScaleFactor)
-#define collectibleSpaceFromTunnel (int)(30 / ScaleFactor)
+#define CollectibleSpaceFromTunnel (int)(30 / ScaleFactor)
 
 #define StartTunnelSpeed 2
 #define StartTunnelPlayableGap (int)(180 / ScaleFactor)
 #define TunnelMinimumPlayableGap (int)(120 / ScaleFactor)
 #define MaxTunnelSpeed 7
-#define offScreenTunnelSections 3
+#define OffScreenTunnelSections 3
 
 #define tunnelSectionWidth 10
 #define tunnelSpacer 16
