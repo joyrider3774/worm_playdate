@@ -4,8 +4,8 @@
 #define ScaleFactor 1.5f
 #define FPSScaleFactor 1.71f
 
-#define ScreenWidth (int)(600 / ScaleFactor)
-#define ScreenHeight (int)(360 / ScaleFactor)
+#define ScreenWidth 400
+#define ScreenHeight 240
 #define FPS (int)(60 / FPSScaleFactor)
 
 #define ObstacleWidth (int)(16 / ScaleFactor)
