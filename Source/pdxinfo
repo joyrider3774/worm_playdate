@@ -4,4 +4,4 @@ description=A Worm / Copter game remake
 bundleID=com.joyrider3774.worm
 version=1.0
 imagePath=metadata
-buildNumber=2
+buildNumber=3

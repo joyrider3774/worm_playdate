@@ -97,7 +97,7 @@ bool playing = false;
 
 
 LCDFont* MonoFont;
-bool showfps = true;
+bool showfps = false;
 
 void setPDPtr(PlaydateAPI* p) {
     pd = p;
