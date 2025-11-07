@@ -79,6 +79,5 @@ The game was made possible after watching this youtube movie: [https://www.youtu
 - Better Collision detection, it now also checks for intersections on the rectangles instead of only fully inside in for example, walls, collectibles or obstacles
 - Faster Collision detection for tunnel walls by only checking the tunnel sections near the player instead of all of them
 - Fix a few tunnelSection potentially not being intialized although it posed no problem during gameplay in the previous version
-- Faster Worm drawing, by not redrawing every worm intersection at 1 pixel manually but just setting the line width (does drawing of an intersection in one go)
 - More Variables / constants in the code instead of relying on hardcoded numerical values
 

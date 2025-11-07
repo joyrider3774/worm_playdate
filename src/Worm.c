@@ -256,7 +256,8 @@ void drawPlayer()
             pd->graphics->fillRect(playerTrail[x].x - 1, playerTrail[x].y - 1, 3, 3, kColorWhite);
             if (x > 0)
                 if ((playerTrail[x-1].y > 0) && (playerTrail[x-1].x > 0))
-                    pd->graphics->drawLine(playerTrail[x].x, playerTrail[x].y, (int)playerTrail[x-1].x, (int)playerTrail[x-1].y, PlayerWidthHeight, kColorWhite);
+                    for (int y = 0; y < PlayerWidthHeight+1; y++)
+                        pd->graphics->drawLine(playerTrail[x].x, playerTrail[x].y - 2 + y, (int)playerTrail[x - 1].x, (int)playerTrail[x - 1].y - 2 + y, 1, kColorWhite);
         }
     }
 }
